@@ -6,6 +6,21 @@ Fast, secure, salted and short unique hash in Javascript and Node.js
 
 .
 
+## Problems with standard hashes
+
+ - Hashes are too long, they must be short
+ - Hashes do hash only once
+ - Hashing time must be optional
+ - Hashing must work client-side
+ - Hashing only with hashes for-now without collisions
+ - Hash must be deployed CDN
+ - Hash must be extremely fast if necessary
+ - Hash must be open
+
+.
+
+.
+
 ## How to use
 
 ** Longer and nicer **
@@ -38,6 +53,7 @@ Fast, secure, salted and short unique hash in Javascript and Node.js
 	// > 23a292d0891d3135e1f5a5970a15913942b5a6da
 	// > c6a6e35a624776ad4fd73ce9fc1b2ad2caa7ac3a
 
+.
 
 ** Short with options **
 
@@ -50,12 +66,17 @@ Fast, secure, salted and short unique hash in Javascript and Node.js
 	console.log(result);
 	// > e457227529744e2146bdf813e57259f256fd7cdc
 
+.
+
 ** Short without options **
 
 
 	console.log( require("./Honesthash.js")().hex("123") );
 	// > 1176e5c9188f73a5203656949848c19680ecc062
 
+.
+
+.
 
 ## Options
 
@@ -64,21 +85,6 @@ Fast, secure, salted and short unique hash in Javascript and Node.js
 		loop: 1, // can be between 1 and 1000000
 		logs : false // logs everything to console (speed, hash, string)
 	}
-
-.
-
-.
-
-## Problems
-
- - Hashes are too long, they must be short
- - Hashes do hash only once
- - Hashing time must be optional
- - Hashing must work client-side
- - Hashing only with hashes for-now without collisions
- - Hash must be deployed CDN
- - Hash must be extremely fast if necessary
- - Hash must be open
 
 .
 
