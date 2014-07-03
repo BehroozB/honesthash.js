@@ -44,20 +44,20 @@
 	Honesthash.prototype._optionsValidationSpeed = function () {
 
 		// if someone is trying to set a speed option >500k
-		if (this._options.speed<=0){
-			this._options.speed = 1;
+		if (this._options.loop<=0){
+			this._options.loop = 1;
 		}
 
 		// if speed is NaN or is negative or zero
-		var isNotNumber = isNaN(this._options.speed);
-		var isNegativeOrZero = this._options.speed<=0;
+		var isNotNumber = isNaN(this._options.loop);
+		var isNegativeOrZero = this._options.loop<=0;
 		if (isNotNumber || isNegativeOrZero){
-			this._options.speed = 1;
+			this._options.loop = 1;
 		}
 
 		// if someone is trying to set a speed option >500k
-		if (this._options.speed>500000){
-			this._options.speed = 500000;
+		if (this._options.loop>500000){
+			this._options.loop = 500000;
 		}
 
 	};
@@ -586,7 +586,7 @@
 		);
 
 		var hashedAgainInLoop = hashedStringWithRipe160;
-		for (var i = 0; i < this._options.speed; i++) {
+		for (var i = 0; i < this._options.loop; i++) {
 			hashedAgainInLoop = this._implementationOfRipemd160(hashedAgainInLoop);
 		}
 
@@ -596,21 +596,67 @@
 
 
 	/**
+	 *
+	 *  Bechmark tests speed of all algorithms within library or more looping hashes
+	 *
+	 */
+	Honesthash.prototype.bechmarkSpeedOfHashing = function () {
+
+		console.log( "1st 1", this._benchmarkParticularConf(1, "a") );
+		console.log( "2nd 10", this._benchmarkParticularConf(10, "a") );
+		console.log( "3rd 100", this._benchmarkParticularConf(100, "a") );
+		console.log( "4th 1000", this._benchmarkParticularConf(1000, "a") );
+		console.log( "5th 10000", this._benchmarkParticularConf(10000, "a") );
+		console.log( "6th 100000", this._benchmarkParticularConf(100000, "a") );
+		console.log( "7th 1000000", this._benchmarkParticularConf(1000000, "a") );
+
+	};
+
+	/**
+	 *
+	 *  Bechmark tests speed of all algorithms within library or more looping hashes
+	 *
+	 */
+	Honesthash.prototype._benchmarkParticularConf = function (speed, string) {
+
+		// speed is set normally by user
+		this._options.loop = speed;
+
+		this._startDate = +new Date();
+		this.hashHex(string);
+		this._endDate = +new Date();
+
+		return (this._endDate - this._startDate);
+
+	};
+
+	/**
 	 *  Check if given second parameter is really a hash result of the first string
 	 */
-	Honesthash.prototype.testBackwardCompatibility = function (colletionOfHashingPairs) {
+	Honesthash.prototype.testBackwardCompatibility = function () {
+
+		var TESTED_HASH = [
+			[ "387597980370502395793203798345", "790902594dfef53b4bf6fdcbc20085bc5af5d548" ],
+			[ "kjnskjnfiwjiofpfjadnskavjandkj", "c301c54c063bf969a5d6ad2d28857d4ed9da4bb6" ],
+			[ "JKDJOIQJIDQMNMSANKNOIQWJQOISJD", "575e901e9d3ad4aa7e690e24f78072d77b983d2e" ],
+			[ "ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΜμΞξΦφ", "b291aa343a47554e4459d8b089025eebfeab1202" ],
+			[ "šľéáíáčíéíýžýťľáíľéčáľíšýčľšýá", "a2e91cf422a3fa72f381cec9bf08844764557318" ],
+			[ "АБВГДЕЖЅZЗИІКЛМНОПҀРСТȢѸФХѾЦЧШ", "9353a5ab79cb0d8da38a778a365385332370e497" ],
+			[ "äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ", "d82ad7b0b30e015e49b7743b7ce91e375227bb6f" ],
+			[ ",./ ;']= -- `~@!%^^*&*()!_@#^%", "be70347a5602b8806b31d20ac6982d2b4ce3ce75" ]
+		];
 
 		// save state and later set back to this values
 		var hashState = this._options.hash;
-		var speedState = this._options.speed;
+		var loopState = this._options.loop;
 
 		// reset options for
 		this._options.hash = "";
-		this._options.speed = 1;
+		this._options.loop = 1;
 
 		var that = this;
 
-		colletionOfHashingPairs.forEach(function(pair){
+		TESTED_HASH.forEach(function(pair){
 			// get result - if everything is OK, should be true
 			var isTestedFine = ( that.hashHex(pair[0]) === pair[1] );
 			if (!isTestedFine) throw "something is very very wrong and algorithm is broken!";
@@ -618,7 +664,7 @@
 
 		// revert options to before values
 		this._options.hash = hashState;
-		this._options.speed = speedState;
+		this._options.loop = loopState;
 
 		console.log("Test passed OK, backward compatibility is fine in all alphabets!");
 		return "Test passed OK, backward compatibility is fine in all alphabets!";
@@ -629,7 +675,10 @@
 	var hashThisShit = new Honesthash({
 		hash: "",
 		speed: 10,
+		loop: 10,
 		logs : true
 	});
 
+
 	hashThisShit.hashHex("test");
+	hashThisShit.bechmarkSpeedOfHashing();

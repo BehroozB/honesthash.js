@@ -19,27 +19,29 @@ Fast, secure, salted and short unique hash in Javascript and Node.js
 
 ## Bechmark
 
-
+ - See _bechmark.md file with specification, how to and results of ours benchmark. We benchmarked
+iMac 2011 with OS X Yosemite and  Node.js v10.17.
 
 ## Test of the algorithm backward compatibility
 
 Testing of backward compatibility is very important not just for standard US/EU latin charactes,
 but also for special characters, the cyrillic script, spaces, the greek alphabet and diacritics.
 
-	var myHonestHashInstance = new Honesthash();
-
-	myHonestHashInstance.testBackwardCompatibility([
-		[ "387597980370502395793203798345", "790902594dfef53b4bf6fdcbc20085bc5af5d548" ],
-		[ "kjnskjnfiwjiofpfjadnskavjandkj", "c301c54c063bf969a5d6ad2d28857d4ed9da4bb6" ],
-		[ "JKDJOIQJIDQMNMSANKNOIQWJQOISJD", "575e901e9d3ad4aa7e690e24f78072d77b983d2e" ],
-		[ "ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΜμΞξΦφ", "b291aa343a47554e4459d8b089025eebfeab1202" ],
-		[ "šľéáíáčíéíýžýťľáíľéčáľíšýčľšýá", "a2e91cf422a3fa72f381cec9bf08844764557318" ],
-		[ "АБВГДЕЖЅZЗИІКЛМНОПҀРСТȢѸФХѾЦЧШ", "9353a5ab79cb0d8da38a778a365385332370e497" ],
-		[ "äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ", "d82ad7b0b30e015e49b7743b7ce91e375227bb6f" ],
-		[ ",./ ;']= -- `~@!%^^*&*()!_@#^%", "be70347a5602b8806b31d20ac6982d2b4ce3ce75" ]
-	]);
-
+	var myHonestHashInstance = new require("Honesthash")();
+	myHonestHashInstance.testBackwardCompatibility();
 	// > "Test passed OK, backward compatibility is fine in all alphabets!"
+
+For backward compatiblity are tested these strings:
+
+ - `387597980370502395793203798345`
+ - `kjnskjnfiwjiofpfjadnskavjandkj`
+ - `JKDJOIQJIDQMNMSANKNOIQWJQOISJD`
+ - `ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΜμΞξΦφ`
+ - `šľéáíáčíéíýžýťľáíľéčáľíšýčľšýá`
+ - `АБВГДЕЖЅZЗИІКЛМНОПҀРСТȢѸФХѾЦЧШ`
+ - `äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ`
+ - `,./ ;']= -- `~@!%^^*&*()!_@#^%`
+
 
 ## Licence
 
