@@ -1,10 +1,24 @@
-Honesthash.js
-=============
+# Honesthash.js
 
 Fast, secure, salted and short unique hash in Javascript and Node.js
 
+## How to use
+
+**Node.js**
+
+
+
+---
+
 ## Options
 
+	{
+		salt: "", // your custom hash, can be any string
+		loop: 1, // can be between 1 and 1000000
+		logs : false // logs everything to console (speed, hash, string)
+	}
+
+---
 
 ## Problems
 
@@ -17,10 +31,14 @@ Fast, secure, salted and short unique hash in Javascript and Node.js
  - Hash must be extremely fast if necessary
  - Hash must be open
 
+---
+
 ## Bechmark
 
- - See _bechmark.md file with specification, how to and results of ours benchmark. We benchmarked
+See **_bechmark.md** file with specification, how to and results of ours benchmark. We benchmarked
 iMac 2011 with OS X Yosemite and  Node.js v10.17.
+
+---
 
 ## Test of the algorithm backward compatibility
 
@@ -33,15 +51,16 @@ but also for special characters, the cyrillic script, spaces, the greek alphabet
 
 For backward compatiblity are tested these strings:
 
- - `387597980370502395793203798345`
- - `kjnskjnfiwjiofpfjadnskavjandkj`
- - `JKDJOIQJIDQMNMSANKNOIQWJQOISJD`
- - `ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΜμΞξΦφ`
- - `šľéáíáčíéíýžýťľáíľéčáľíšýčľšýá`
- - `АБВГДЕЖЅZЗИІКЛМНОПҀРСТȢѸФХѾЦЧШ`
- - `äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ`
- - `,./ ;']= -- `~@!%^^*&*()!_@#^%`
+	`387597980370502395793203798345`
+	`kjnskjnfiwjiofpfjadnskavjandkj`
+	`JKDJOIQJIDQMNMSANKNOIQWJQOISJD`
+	`ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΜμΞξΦφ`
+	`šľéáíáčíéíýžýťľáíľéčáľíšýčľšýá`
+	`АБВГДЕЖЅZЗИІКЛМНОПҀРСТȢѸФХѾЦЧШ`
+	`äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ`
+	`,./ ;']= -- `~@!%^^*&*()!_@#^%`
 
+---
 
 ## Licence
 

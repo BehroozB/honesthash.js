@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 
 	"use strict";
@@ -8,13 +9,26 @@
 	 */
 	var Honesthash = function (options) {
 
-		this._options = options;
+		// if user set no options of the function in an initial call
+		this._options = options || {};
+		this._options.logs = this._options.logs || false;
 
-		// Validate speed option, if is not entered, is negative, is NaN or is too big
+		// validate speed option, if is not entered, is negative, is NaN or is too big
 		this._optionsValidationSpeed();
 
-		// validate
-		this._optionsValidationHash();
+		// validate given salt for improving security of the string
+		this._optionsValidationSalt();
+
+	};
+
+
+	/**
+	 *  Logger if is turn on to the console of Node or Console of Window at Client
+	 */
+	Honesthash.prototype._log = function (message) {
+
+		var isAllowedLogging = this._options.logs;
+		if (isAllowedLogging){ console.log(+new Date, message); }
 
 	};
 
@@ -22,17 +36,18 @@
 	/**
 	 *  validate hash from the options, if hash is not give, set a default hash
 	 */
-	Honesthash.prototype._optionsValidationHash = function () {
+	Honesthash.prototype._optionsValidationSalt = function () {
 
 		// check if given hash is really instance and type of string
-		var isTypeOfString = typeof this._options.hash == "string";
-		var isInstanceOfString = this._options.hash instanceof String;
+		var isTypeOfString = typeof this._options.salt == "string";
+		var isInstanceOfString = this._options.salt instanceof String;
 		var isValidString = isTypeOfString || isInstanceOfString;
 
 		// if given hash is not a string, set hash to the default - the quote of the dude
 		if (!isValidString){
+			this._log("WARNING! an option salt must be valid string and nothing else!");
 			var quoteBigLebowski = "Does the female form make you uncomfortable, Mr. Lebowski?";
-			console.log(quoteBigLebowski);
+			this._options.salt = quoteBigLebowski;
 		}
 
 	};
@@ -43,8 +58,21 @@
 	 */
 	Honesthash.prototype._optionsValidationSpeed = function () {
 
+		// if is passed string
+		if (typeof this._options.loop === "string"){
+			this._log("WARNING! in options should be a loop like a number, not a string!");
+			this._options.loop = 1;
+		}
+
+		// if someone is trying to set a speed option >500k
+		if (this._options.loop === undefined){
+			this._log("WARNING! if a loop option is not defined, is set (by default) to 1");
+			this._options.loop = 1;
+		}
+
 		// if someone is trying to set a speed option >500k
 		if (this._options.loop<=0){
+			this._log("WARNING! you are trying to pass a negative loop number, reset to 1");
 			this._options.loop = 1;
 		}
 
@@ -52,11 +80,13 @@
 		var isNotNumber = isNaN(this._options.loop);
 		var isNegativeOrZero = this._options.loop<=0;
 		if (isNotNumber || isNegativeOrZero){
+			this._log("WARNING! you are trying to pass a negative number or not a number like a loop option!");
 			this._options.loop = 1;
 		}
 
 		// if someone is trying to set a speed option >500k
 		if (this._options.loop>500000){
+			this._log("WARNING! in options must be a loop number under 50000, reseted to 50000!");
 			this._options.loop = 500000;
 		}
 
@@ -571,18 +601,20 @@
 	 *  Returns simple standard RIPEMD160 hash from given string
 	 *
 	 */
-	Honesthash.prototype.hashHex = function (wannaBeHashed) {
+	Honesthash.prototype.hex = function (wannaBeHashed) {
+
+		var setOptionalSalt = this._options.salt;
 
 		var hashedStringWithSha512 = this._implementationOfSha512(
-				wannaBeHashed + this._options.hash
+				wannaBeHashed + setOptionalSalt
 		);
 
 		var hashedSecondTimeWithSha512 = this._implementationOfSha512(
-				hashedStringWithSha512 + this._options.hash
+				hashedStringWithSha512 + setOptionalSalt
 		);
 
 		var hashedStringWithRipe160 = this._implementationOfRipemd160(
-				hashedSecondTimeWithSha512 + this._options.hash
+				hashedSecondTimeWithSha512 + setOptionalSalt
 		);
 
 		var hashedAgainInLoop = hashedStringWithRipe160;
@@ -623,7 +655,7 @@
 		this._options.loop = speed;
 
 		this._startDate = +new Date();
-		this.hashHex(string);
+		this.hex(string);
 		this._endDate = +new Date();
 
 		return (this._endDate - this._startDate);
@@ -647,23 +679,23 @@
 		];
 
 		// save state and later set back to this values
-		var hashState = this._options.hash;
+		var saltState = this._options.salt;
 		var loopState = this._options.loop;
 
 		// reset options for
-		this._options.hash = "";
+		this._options.salt = "";
 		this._options.loop = 1;
 
 		var that = this;
 
 		TESTED_HASH.forEach(function(pair){
 			// get result - if everything is OK, should be true
-			var isTestedFine = ( that.hashHex(pair[0]) === pair[1] );
+			var isTestedFine = ( that.hex(pair[0]) === pair[1] );
 			if (!isTestedFine) throw "something is very very wrong and algorithm is broken!";
 		});
 
 		// revert options to before values
-		this._options.hash = hashState;
+		this._options.salt = saltState;
 		this._options.loop = loopState;
 
 		console.log("Test passed OK, backward compatibility is fine in all alphabets!");
@@ -672,13 +704,7 @@
 	};
 
 
-	var hashThisShit = new Honesthash({
-		hash: "",
-		speed: 10,
-		loop: 10,
-		logs : true
-	});
 
-
-	hashThisShit.hashHex("test");
-	hashThisShit.bechmarkSpeedOfHashing();
+	module.exports = function(options){
+		return new Honesthash(options);
+	};

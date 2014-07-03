@@ -3,6 +3,9 @@
   "subdomain": "honesthash",
   "main": "./Honesthash.js",
   "homepage": "http://ondrek.com/",
+	"bin": {
+		"honesthash": "./Honesthash.js"
+	},
   "author": "Samuel Ondrek (http://github.com/ondrek/)",
   "bugs": {
     "url": "https://github.com/ondrek/honesthash.js/issues/"
