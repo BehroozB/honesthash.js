@@ -1,43 +1,40 @@
 {
-	"name": "honesthash",
-	"subdomain": "honesthash",
-	"main": "./Honesthash.js",
-	"homepage": "http://ondrek.com/",
-	"author": {
-		"name": "Samuel Ondrek",
-		"url": "http://github.com/ondrek/",
-		"website": "http://ondrek.com",
-		"blog": "http://ondrek.me",
-		"twitter": "@ondrek"
-	},
-	"bugs": {
-		"url": "https://github.com/ondrek/honesthash.js/issues/"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ondrek/honesthash.js.git"
-	},
-	"description": "Fast, secure, salted and short unique hash in Javascript and Node.js",
-	"keywords": [
-		"fast",
-		"secure",
-		"salt",
-		"salted",
-		"short",
-		"uniq",
-		"hash",
-		"sha512",
-		"ripe160",
-		"javascript",
-		"semantical",
-		"nodejs",
-		"server",
-		"client"
-	],
-	"preferGlobal": true,
-	"version": "0.1.0",
-	"license": "MIT",
-	"engines": {
-		"node": "0.10.*"
-	}
+  "name": "honesthash",
+  "subdomain": "honesthash",
+  "main": "./Honesthash.js",
+  "homepage": "http://ondrek.com/",
+  "author": "Samuel Ondrek (http://github.com/ondrek/)",
+  "bugs": {
+    "url": "https://github.com/ondrek/honesthash.js/issues/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ondrek/honesthash.js.git"
+  },
+  "description": "Fast, secure, salted and short unique hash in Javascript and Node.js",
+  "keywords": [
+    "fast",
+    "secure",
+    "salt",
+    "salted",
+    "short",
+    "uniq",
+    "hash",
+    "sha512",
+    "ripe160",
+    "javascript",
+    "semantical",
+    "nodejs",
+    "server",
+    "client"
+  ],
+  "preferGlobal": true,
+  "version": "0.1.0",
+  "license": "MIT",
+  "engines": {
+    "node": "0.10.*"
+  },
+  "scripts": {
+    "test": "./Honesthash.js"
+  }
 }
