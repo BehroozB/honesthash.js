@@ -3,9 +3,9 @@
   "subdomain": "honesthash",
   "main": "./Honesthash.js",
   "homepage": "http://ondrek.com/",
-	"bin": {
-		"honesthash": "./Honesthash.js"
-	},
+  "bin": {
+    "honesthash": "./Honesthash.js"
+  },
   "author": "Samuel Ondrek (http://github.com/ondrek/)",
   "bugs": {
     "url": "https://github.com/ondrek/honesthash.js/issues/"
@@ -32,7 +32,7 @@
     "client"
   ],
   "preferGlobal": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "engines": {
     "node": "0.10.*"
