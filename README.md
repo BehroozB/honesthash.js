@@ -1,21 +1,28 @@
-# Honesthash.js
+# honesthash.js
 
-Fast, secure, salted and short unique hash in Javascript and Node.js
-
-.
+Fast, secure, salted and short unique hash for Node.js
 
 .
 
-## Problems with standard hashes
+.
 
- - Hashes are too long, they must be short
- - Hashes do hash only once
- - Hashing time must be optional
+## Solves problems of conventional hashing
+
+ - Hash is too slow or too fast
+   - Honesthash has optional speed
+ - Modern hashes (SHA2-512) hashes are too long
+   - Honesthash is always long only 40 characters long
+ - Hashes normally hash only once
+   - Honesthash has optional loop
  - Hashing must work client-side
- - Hashing only with hashes for-now without collisions
- - Hash must be deployed CDN
+   - Honesthash is going to be implemented also for client (august 2014)
+ - Hashes has known collisions
+   - Honesthash uses SHA3 512 and RIPE160
  - Hash must be extremely fast if necessary
- - Hash must be open
+   - Honesthash needs only 4ms (see _benchmark.md)
+ - Hash must be open source
+   - Security != Secret, and never will be!
+
 
 .
 
