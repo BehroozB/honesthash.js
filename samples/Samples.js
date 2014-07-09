@@ -3,7 +3,7 @@
 	/** Longer and nicer */
 
 
-		var hashModule = require("./Honesthash.js");
+		var hashModule = require("./../Honesthash.js");
 
 		var developmentEnv = hashModule({
 			loop : 1,
@@ -37,7 +37,7 @@
 	/** Short with options */
 
 
-		var result = require("./Honesthash.js")({
+		var result = require("./../Honesthash.js")({
 			salt : "",
 			loop : 15000
 		}).hex("123");
@@ -50,5 +50,5 @@
 	/** Short without options */
 
 
-		console.log( require("./Honesthash.js")().hex("123") );
+		console.log( require("./../Honesthash.js")().hex("123") );
 		// > 1176e5c9188f73a5203656949848c19680ecc062
