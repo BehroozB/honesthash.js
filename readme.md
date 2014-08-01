@@ -14,12 +14,18 @@ When you:
   - need a very short, but still unique hash
   - need a configurable own speed of hashing
    
+<br/>
+<br/>
 
-### Problems of conventional hashes
+### Problems of conventional hashes and the honest hash
 
-A result hash is:
+A conventional result hash is:
 
- - too slow (DDoS problem) or too fast (cracking and rainbow([*][id]) tables) 
+ - too slow (DDoS problem) or too fast (cracking and rainbow([*][id]) tables)
+   - honest hash has an optional speed parameter
+ 
+ - too slow (DDoS problem) or too fast (cracking and rainbow([*][id]) tables)
+   - honest hash has an optional speed parameter 
 
  - Hash is too slow or too fast
    - Honesthash has optional speed
