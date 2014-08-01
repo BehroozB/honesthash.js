@@ -1,12 +1,12 @@
-# honesthash.js
+# Honest Hash
 
-Fast, secure, salted and short unique hash for Node.js
+**Extremely safe, fast and short unique hash in Javascript (and Node.js)**
 
-.
-
-.
+<br/>
+<br/>
 
 ## Solves problems of conventional hashing
+## Why 
 
  - Hash is too slow or too fast
    - Honesthash has optional speed
@@ -24,9 +24,8 @@ Fast, secure, salted and short unique hash for Node.js
    - Security != Secret, and never will be!
 
 
-.
-
-.
+<br/>
+<br/>
 
 ## How to use
 
@@ -60,7 +59,7 @@ Fast, secure, salted and short unique hash for Node.js
 	// > 23a292d0891d3135e1f5a5970a15913942b5a6da
 	// > c6a6e35a624776ad4fd73ce9fc1b2ad2caa7ac3a
 
-.
+<br/>
 
 ** Short with options **
 
@@ -73,7 +72,7 @@ Fast, secure, salted and short unique hash for Node.js
 	console.log(result);
 	// > e457227529744e2146bdf813e57259f256fd7cdc
 
-.
+<br/>
 
 ** Short without options **
 
@@ -81,9 +80,8 @@ Fast, secure, salted and short unique hash for Node.js
 	console.log( require("./Honesthash.js")().hex("123") );
 	// > 1176e5c9188f73a5203656949848c19680ecc062
 
-.
-
-.
+<br/>
+<br/>
 
 ## Options
 
@@ -93,18 +91,16 @@ Fast, secure, salted and short unique hash for Node.js
 		logs : false // logs everything to console (speed, hash, string)
 	}
 
-.
-
-.
+<br/>
+<br/>
 
 ## Bechmark
 
 See **_bechmark.md** file with specification, how to and results of ours benchmark. We benchmarked
 iMac 2011 with OS X Yosemite and  Node.js v10.17.
 
-.
-
-.
+<br/>
+<br/>
 
 ## Test of the algorithm backward compatibility
 
@@ -126,9 +122,8 @@ For backward compatiblity are tested these strings:
 	"äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ"
 	",./ ;']= -- `~@!%^^*&*()!_@#^%"
 
-.
-
-.
+<br/>
+<br/>
 
 ## Licence
 
@@ -137,6 +132,5 @@ For backward compatiblity are tested these strings:
  - MIT Licence (full article written in LICENCE.md)
  - Author ~ Samuel Ondrek, twitter.com/ondrek
 
-.
-
-.
+<br/>
+<br/>
