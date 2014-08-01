@@ -1,12 +1,18 @@
 # Honest Hash
 
-## The best hashing algorithm for speed, uniqueness, speed and length
+## The best hashing algorithm for speed, uniqueness, speed and length for Javascript
 
 <br/>
 <br/>
 
-## Solves problems of conventional hashing
-## Why 
+### When should I use HonestHash.js
+  
+  - When you need a very short, but still unique hash
+  - When you need a configurable own speed of hashing
+  - When you want use one library for client and server side
+  - When you love open source 
+
+### Problems of conventional hashes
 
  - Hash is too slow or too fast
    - Honesthash has optional speed
@@ -27,7 +33,7 @@
 <br/>
 <br/>
 
-## How to use
+### How to use
 
 ** Longer and nicer **
 
@@ -83,7 +89,7 @@
 <br/>
 <br/>
 
-## Options
+### Options
 
 	{
 		salt: "", // your custom hash, can be any string
@@ -94,7 +100,7 @@
 <br/>
 <br/>
 
-## Bechmark
+### Bechmark
 
 See **_bechmark.md** file with specification, how to and results of ours benchmark. We benchmarked
 iMac 2011 with OS X Yosemite and  Node.js v10.17.
@@ -102,7 +108,7 @@ iMac 2011 with OS X Yosemite and  Node.js v10.17.
 <br/>
 <br/>
 
-## Test of the algorithm backward compatibility
+### Test of the algorithm backward compatibility
 
 Testing of backward compatibility is very important not just for standard US/EU latin charactes,
 but also for special characters, the cyrillic script, spaces, the greek alphabet and diacritics.
@@ -125,7 +131,7 @@ For backward compatiblity are tested these strings:
 <br/>
 <br/>
 
-## Licence
+### Licence
 
  - Can be used on all projects (free for private and commercial use)
  - Use only from the orignal repository (security can be compromised)
