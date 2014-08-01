@@ -117,6 +117,7 @@ characters (3), Eastern European characters (4) and many others..
     2: `1234567890`
     3: `!@#$%^&*()_-+={[}]:;"'|\?/>.<,œ∑´†¥¨ˆπ¬˚∆˙ƒ∂ßåΩ≈ç√∫˜Ω`
     4: `ąàáäâãåæăăâćęèéëêìíïîîłńòóöôõøśșşțţùúüûñçżźа`
+    5: `zxcvbnmlkjhgfdsaqwertyuiop`
 
 <br/>
 <br/>
