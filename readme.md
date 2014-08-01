@@ -82,14 +82,6 @@ A conventional result hash is:
 <br/>
 <br/>
 
-### Bechmark
-
-For a full benchmark see file `docs/bechmark.md`, that contains results of our benchmark. We used iMac 2011
-with OSX Yosimite and Node.js v10.17. Computer had installed 4GB RAM.
-
-<br/>
-<br/>
-
 ### How Honest Hash works?
 
 **Hashing**
@@ -108,7 +100,10 @@ incorporating a salt protects against rainbow table attacks. Hashing iterates wi
 optional parameter `speed`. Iteration makes hashing slower, so it remains resistant to brute-force search
 attacks even with increasing computer power.
 
-### Algorithm backward compatibility
+<br/>
+<br/>
+
+### Backward compatibility algorithms
 
 Honest Hash is tested not just for English characters, but also for the Cyrillic script (1), numbers (2), special 
 characters (3), Eastern European characters (4) and many others..
@@ -118,6 +113,14 @@ characters (3), Eastern European characters (4) and many others..
     3: `!@#$%^&*()_-+={[}]:;"'|\?/>.<,œ∑´†¥¨ˆπ¬˚∆˙ƒ∂ßåΩ≈ç√∫˜Ω`
     4: `ąàáäâãåæăăâćęèéëêìíïîîłńòóöôõøśșşțţùúüûñçżźа`
     5: `zxcvbnmlkjhgfdsaqwertyuiop`
+
+<br/>
+<br/>
+
+### Bechmark
+
+For a full benchmark see file `docs/bechmark.md`, that contains results of our benchmark. We used iMac 2011
+with OSX Yosimite and Node.js v10.17. Computer had installed 4GB RAM.
 
 <br/>
 <br/>
