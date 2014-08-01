@@ -21,16 +21,15 @@ When you:
 
 A conventional result hash is:
 
-1. too slow (DDoS problem) or too fast (cracking and rainbow([*][id]) tables)<br>
-+ honest hash has an optional speed parameter
+too slow (DDoS problem) or too fast (cracking and rainbow([*][1]) tables)<br>
+honest hash has an optional speed parameter
  
-2. too slow (DDoS problem) or too fast (cracking and rainbow([*][id]) tables)<br>
-> honest hash has an optional speed parameter 
+too long (when you store millions of 512 characters a long string in database)<br>
+honest hash is only 40 characters long and without any collisions 
 
- - Hash is too slow or too fast
-   - Honesthash has optional speed
- - Modern hashes (SHA2-512) hashes are too long
-   - Honesthash is always long only 40 characters long
+hashed only once and do not use any salt (tables have 43.745[*][2] billion results)<br>
+
+
  - Hashes normally hash only once
    - Honesthash has optional loop
  - Hashing must work client-side
@@ -154,4 +153,5 @@ For backward compatiblity are tested these strings:
 <br/>
 <br/>
 
- [id]: http://example.com/  "Optional Title Here"
+ [1]: http://en.wikipedia.org/wiki/Rainbow_table  "Check what is a rainbow table on Wikipedia"
+ [2]: http://www.hashkiller.co.uk/  "Try to crack your own MD5 hash"
