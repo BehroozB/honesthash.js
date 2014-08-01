@@ -110,9 +110,13 @@ attacks even with increasing computer power.
 
 ### Algorithm backward compatibility
 
-Honest Hash is tested not just for English characters, but also for the Cyrillic script (`бвгдеёжзийклмнопрстуфхцчшщъыьэюя`),
-numbers (`1234567890`), special characters (`!@#$%^&*()_-+={[}]:;"'|\?/>.<,œ∑´†¥¨ˆπ¬˚∆˙©ƒ∂ßåΩ≈ç√∫˜Ω`), Eastern European 
-characters (`ąàáäâãåæăăâćęèéëêìíïîîłńòóöôõøśșşțţùúüûñçżźа`) and many others.
+Honest Hash is tested not just for English characters, but also for the Cyrillic script (1), numbers (2), special 
+characters (3), Eastern European characters (4) and many others..
+
+    1: `бвгдеёжзийклмнопрстуфхцчшщъыьэюя`
+    2: `1234567890`
+    3: `!@#$%^&*()_-+={[}]:;"'|\?/>.<,œ∑´†¥¨ˆπ¬˚∆˙©ƒ∂ßåΩ≈ç√∫˜Ω`
+    4: `ąàáäâãåæăăâćęèéëêìíïîîłńòóöôõøśșşțţùúüûñçżźа`
 
 <br/>
 <br/>
