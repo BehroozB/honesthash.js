@@ -85,6 +85,9 @@ This SHA3 result is given to hashing function RIPE160 and it result is provided 
 
     uniqButLong = SHA3-512("your string" + salt);
     shortAndUniq = RIPE160(uniqButLong + salt);
+
+![HonestHash](https://raw.githubusercontent.com/ondrek/honesthash.js/master/graphs/howitworks.png "how it works?")
+   
     
 **Speed**  
 
@@ -114,6 +117,8 @@ special characters (3), Eastern European characters (4) and many others..
 
 For a full benchmark see file `docs/bechmark.md`, that contains results of our benchmark. We used iMac 2011
 with OSX Yosimite and Node.js v10.17. Computer had installed 4GB RAM.
+
+<br/>
 
 ![HonestHash](https://raw.githubusercontent.com/ondrek/honesthash.js/master/graphs/speed1.png "honest hash speed 1")
 ![HonestHash](https://raw.githubusercontent.com/ondrek/honesthash.js/master/graphs/speed2.png "honest hash speed 2")
