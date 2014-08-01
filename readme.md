@@ -41,13 +41,6 @@ A conventional result hash is:
 
 ### How to use Honest Hash and how a result looks like?
 
-**Shortest usage without options**
-
-    console.log( require("./Honesthash.js")().hex("string") );
-    > 1176e5c9188f73a5203656949848c19680ecc062
-
-<br/>
-
 **Short usage with salt and speed options**
 
     var options = { salt : "744bdf813e57252146", speed : 15000 };
@@ -61,13 +54,18 @@ A conventional result hash is:
 
     var hashModule = require("./Honesthash.js");
 
-    var development = hashModule({ speed: 1, salt: "1f5a5ab970a1945c91394", logs: true });
-    var unitTesting = hashModule({ speed: 10000, salt: "159139413f5a5970a", logs: true });
-    var production = hashModule({ speed: 10000, salt: "d73ce9fc1776ad4f", logs: false  });
+    var develHash = hashModule({ speed: 1, salt: "1f5a5ab970a1945c91394", logs: true });
+    var testHash = hashModule({ speed: 10000, salt: "159139413f5a5970a", logs: true });
+    var prodHash = hashModule({ speed: 10000, salt: "d73ce9fc1776ad4f", logs: false  });
 
-    console.log( development.hex("123") );
-    console.log( unitTesting.hex("123") );
-    console.log( production.hex("123") );
+    console.log( develHash.hex("123"), testHash.hex("123"), prodHash.hex("123") );
+
+<br/>
+
+**Shortest usage without options**
+
+    console.log( require("./Honesthash.js")().hex("string") );
+    > 1176e5c9188f73a5203656949848c19680ecc062
 
 <br/>
 <br/>
@@ -75,9 +73,9 @@ A conventional result hash is:
 ### Available options
 
     {
-        salt: "1234567890", // (MANDAGORY) your custom hash, can be any string
-        loop: 1, // (OPTIONAL) can be between 1 and 1000000
-        logs : false // (OPTIONAL) logs everything to console (speed, hash, string)
+        (MANDATORY) salt: "1234567890", // your custom hash, can be any string
+        (OPTIONAL) loop: 1, //  can be between 1 and 1000000
+        (OPTIONAL) logs: false // logs everything to console (speed, hash, string)
     }
 
 <br/>
@@ -85,8 +83,8 @@ A conventional result hash is:
 
 ### Bechmark
 
-See **_bechmark.md** file with specification, how to and results of ours benchmark. We benchmarked
-iMac 2011 with OS X Yosemite and  Node.js v10.17.
+For a full benchmark see file `docs/bechmark.md`, that contains results of our benchmark. We used iMac 2011
+with OSX Yosimite and Node.js v10.17. Computer had installed 4GB RAM.
 
 <br/>
 <br/>
