@@ -17,7 +17,7 @@ When you:
 <br/>
 <br/>
 
-### Requirements for awesome hash
+### Requirements for a ideal hash
 
 **problem:** Speed<br>
 **desc:** Must be reasonably fast (specially for big files), but too quick (no brute force)
