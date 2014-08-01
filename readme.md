@@ -21,26 +21,20 @@ When you:
 
 A conventional result hash is:
 
-too slow (DDoS problem) or too fast (cracking and rainbow([*][1]) tables)<br>
-honest hash has an optional speed parameter
+**p:** too slow (DDoS problem) or too fast (cracking and rainbow([*][1]) tables)<br>
+**s:** honest hash has an optional speed parameter
  
-too long (when you store millions of 512 characters a long string in database)<br>
-honest hash is only 40 characters long and without any collisions 
+**p:** too long (when you store millions of 512 characters a long string in database)<br>
+**s:** honest hash is only 40 characters long and without any collisions 
 
-hashed only once and do not use any salt (tables have 43.745[*][2] billion results)<br>
+**p:** hashed only once and do not use any salt (tables have 43.745[*][2] billion results)<br>
+**s:** honest hash has a **mandatory** salt and optional number of hashing
 
+**p:** in different library for client and server side<br>
+**s:** honest hash has just one implementation for Node.js and client JS
 
- - Hashes normally hash only once
-   - Honesthash has optional loop
- - Hashing must work client-side
-   - Honesthash is going to be implemented also for client (august 2014)
- - Hashes has known collisions
-   - Honesthash uses SHA3 512 and RIPE160
- - Hash must be extremely fast if necessary
-   - Honesthash needs only 4ms (see _benchmark.md)
- - Hash must be open source
-   - Security != Secret, and never will be!
-
+**p:** have known collisions (MD5, SHA0, SHA1..)<br>
+**s:** honest hash uses internally SHA3-512 and RIPEMD-160 (not known collisions)
 
 <br/>
 <br/>
