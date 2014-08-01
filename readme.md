@@ -17,7 +17,7 @@ When you:
 <br/>
 <br/>
 
-### Problems of conventional hashes and the honest hash
+### Problems of conventional hashes and honest hash solutions
 
 A conventional result hash is:
 
@@ -39,69 +39,54 @@ A conventional result hash is:
 <br/>
 <br/>
 
-### How to use
+### How to use Honest Hash and how a result looks like?
 
-** Longer and nicer **
+**Shortest usage without options**
 
-	var hashModule = require("./Honesthash.js");
-
-	var developmentEnv = hashModule({
-		loop : 1,
-		salt : "abcd",
-		logs : true
-	});
-
-	var unitTestingEnv = hashModule({
-		loop : 1000,
-		salt : "abcd",
-		logs : true
-	});
-
-	var productionEnv = hashModule({
-		loop : 10000,
-		salt : "AMSDLMASLKDMALSDKADMKLASMDKLASD",
-		logs : false
-	});
-
-	console.log( developmentEnv.hex("123") );
-	console.log( unitTestingEnv.hex("123") );
-	console.log( productionEnv.hex("123") );
-
-	// > a465b7e074a149446cbd80d3be041193055cc973
-	// > 23a292d0891d3135e1f5a5970a15913942b5a6da
-	// > c6a6e35a624776ad4fd73ce9fc1b2ad2caa7ac3a
+    console.log( require("./Honesthash.js")().hex("string") );
+    > 1176e5c9188f73a5203656949848c19680ecc062
 
 <br/>
 
-** Short with options **
+**Short usage with salt and speed options**
 
-
-	var result = require("./Honesthash.js")({
-		salt : "",
-		loop : 15000
-	}).hex("123");
-
-	console.log(result);
-	// > e457227529744e2146bdf813e57259f256fd7cdc
-
+    var options = { salt : "744bdf813e57252146", speed : 15000 };
+    var result = require("./Honesthash.js")(options).hex("123");
+    console.log(result);
+    > e457227529744e2146bdf813e57259f256fd7cdc
+    
 <br/>
+    
+**Standard usage with more instances of the hash**
 
-** Short without options **
+    var hashModule = require("./Honesthash.js");
 
+    var development = hashModule({
+        speed: 1, salt: "1f5a5b970a1945c91394", logs: true
+    });
 
-	console.log( require("./Honesthash.js")().hex("123") );
-	// > 1176e5c9188f73a5203656949848c19680ecc062
+    var unitTesting = hashModule({
+        speed: 10000, salt: "159139413f5a5970a", logs: true
+    });
+
+    var production = hashModule({
+        speed: 10000, salt: "d73ce9fc1776ad4f", logs: false
+    });
+
+    // development.hex("123");
+    // unitTesting.hex("123");
+    // production.hex("123");
 
 <br/>
 <br/>
 
 ### Options
 
-	{
-		salt: "", // your custom hash, can be any string
-		loop: 1, // can be between 1 and 1000000
-		logs : false // logs everything to console (speed, hash, string)
-	}
+    {
+        salt: "", // your custom hash, can be any string
+        loop: 1, // can be between 1 and 1000000
+        logs : false // logs everything to console (speed, hash, string)
+    }
 
 <br/>
 <br/>
@@ -119,20 +104,20 @@ iMac 2011 with OS X Yosemite and  Node.js v10.17.
 Testing of backward compatibility is very important not just for standard US/EU latin charactes,
 but also for special characters, the cyrillic script, spaces, the greek alphabet and diacritics.
 
-	var myHonestHashInstance = new require("Honesthash")();
-	myHonestHashInstance.testBackwardCompatibility();
-	// > "Test passed OK, backward compatibility is fine in all alphabets!"
+    var myHonestHashInstance = new require("Honesthash")();
+    myHonestHashInstance.testBackwardCompatibility();
+    // > "Test passed OK, backward compatibility is fine in all alphabets!"
 
 For backward compatiblity are tested these strings:
 
-	"387597980370502395793203798345"
-	"kjnskjnfiwjiofpfjadnskavjandkj"
-	"JKDJOIQJIDQMNMSANKNOIQWJQOISJD"
-	"ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΜμΞξΦφ"
-	"šľéáíáčíéíýžýťľáíľéčáľíšýčľšýá"
-	"АБВГДЕЖЅZЗИІКЛМНОПҀРСТȢѸФХѾЦЧШ"
-	"äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ"
-	",./ ;']= -- `~@!%^^*&*()!_@#^%"
+    "387597980370502395793203798345"
+    "kjnskjnfiwjiofpfjadnskavjandkj"
+    "JKDJOIQJIDQMNMSANKNOIQWJQOISJD"
+    "ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΜμΞξΦφ"
+    "šľéáíáčíéíýžýťľáíľéčáľíšýčľšýá"
+    "АБВГДЕЖЅZЗИІКЛМНОПҀРСТȢѸФХѾЦЧШ"
+    "äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ"
+    ",./ ;']= -- `~@!%^^*&*()!_@#^%"
 
 <br/>
 <br/>
