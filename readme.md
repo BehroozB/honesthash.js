@@ -7,9 +7,6 @@
 
 ### Problems of conventional hashes and honest hash solutions
 
-
-### Requirements for a ideal hash
-
 **problem:** SPEED: can't be too slow (for big files) either too fast (because of rainbow([*][1]) tables)<br>
 **solution:** honest hash has an optional speed parameter and can be set between 4ms ~ 22000ms
  
