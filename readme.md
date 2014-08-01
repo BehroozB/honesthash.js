@@ -19,7 +19,7 @@ When you:
 
 A result hash is:
 
- - too slow (DDoS problem) or too fast (cracking and rainbow([~^][id]) tables) 
+ - too slow (DDoS problem) or too fast (cracking and rainbow([~][id]) tables) 
 
  - Hash is too slow or too fast
    - Honesthash has optional speed
