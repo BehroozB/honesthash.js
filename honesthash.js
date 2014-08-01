@@ -10,14 +10,17 @@
     var Honesthash = function(options) {
 
         // if user set no options of the function in an initial call
-        this._options = options || {};
-        this._options.logs = this._options.logs || false;
+        this.options = options || {};
+
+        // set defaults if are not set by user
+        this.options.logs = this.options.logs || false;
+        this.options.salt = this.options.salt || "";
+        this.options.speed = this.options.speed || 1;
 
         // validate speed option, if is not entered, is negative, is NaN or is too big
-        this._optionsValidationSpeed();
-
         // validate given salt for improving security of the string
-        this._optionsValidationSalt();
+        this.optionsValidationSpeed();
+        this.optionsValidationSalt();
 
     };
 
@@ -25,9 +28,10 @@
     /**
      *  Logger if is turn on to the console of Node or Console of Window at Client
      */
-    Honesthash.prototype._log = function(message) {
+    Honesthash.prototype.log = function(message) {
 
-        var isAllowedLogging = this._options.logs;
+        var isAllowedLogging = this.options.logs;
+        
         if (isAllowedLogging) {
             console.log(+new Date, message);
         }
@@ -38,18 +42,17 @@
     /**
      *  validate hash from the options, if hash is not give, set a default hash
      */
-    Honesthash.prototype._optionsValidationSalt = function() {
+    Honesthash.prototype.optionsValidationSalt = function() {
 
         // check if given hash is really instance and type of string
-        var isTypeOfString = typeof this._options.salt == "string";
-        var isInstanceOfString = this._options.salt instanceof String;
+        var isTypeOfString = typeof this.options.salt == "string";
+        var isInstanceOfString = this.options.salt instanceof String;
         var isValidString = isTypeOfString || isInstanceOfString;
 
         // if given hash is not a string, set hash to the default - the quote of the dude
         if (!isValidString) {
-            this._log("WARNING! an option salt must be valid string and nothing else!");
-            var quoteBigLebowski = "Does the female form make you uncomfortable, Mr. Lebowski?";
-            this._options.salt = quoteBigLebowski;
+            this.log("WARNING! an option salt must be valid string and nothing else!");
+            this.options.salt = "";
         }
 
     };
@@ -58,38 +61,38 @@
     /**
      *  Validate speed option, if is not entered, is negative, is NaN or is too big
      */
-    Honesthash.prototype._optionsValidationSpeed = function() {
+    Honesthash.prototype.optionsValidationSpeed = function() {
 
         // if is passed string
-        if (typeof this._options.loop === "string") {
-            this._log("WARNING! in options should be a loop like a number, not a string!");
-            this._options.loop = 1;
+        if (typeof this.options.speed === "string") {
+            this.log("WARNING! in options should be a loop like a number, not a string!");
+            this.options.speed = 1;
         }
 
         // if someone is trying to set a speed option >500k
-        if (this._options.loop === undefined) {
-            this._log("WARNING! if a loop option is not defined, is set (by default) to 1");
-            this._options.loop = 1;
+        if (this.options.speed === undefined) {
+            this.log("WARNING! if a loop option is not defined, is set (by default) to 1");
+            this.options.speed = 1;
         }
 
         // if someone is trying to set a speed option >500k
-        if (this._options.loop <= 0) {
-            this._log("WARNING! you are trying to pass a negative loop number, reset to 1");
-            this._options.loop = 1;
+        if (this.options.speed <= 0) {
+            this.log("WARNING! you are trying to pass a negative loop number, reset to 1");
+            this.options.speed = 1;
         }
 
         // if speed is NaN or is negative or zero
-        var isNotNumber = isNaN(this._options.loop);
-        var isNegativeOrZero = this._options.loop <= 0;
+        var isNotNumber = isNaN(this.options.speed);
+        var isNegativeOrZero = this.options.speed <= 0;
         if (isNotNumber || isNegativeOrZero) {
-            this._log("WARNING! you are trying to pass a negative number or not a number like a loop option!");
-            this._options.loop = 1;
+            this.log("WARNING! you are trying to pass a negative number or not a number like a loop option!");
+            this.options.loop = 1;
         }
 
         // if someone is trying to set a speed option >500k
-        if (this._options.loop > 500000) {
-            this._log("WARNING! in options must be a loop number under 50000, reseted to 50000!");
-            this._options.loop = 500000;
+        if (this.options.speed > 500000) {
+            this.log("WARNING! in options must be a loop number under 50000, reseted to 50000!");
+            this.options.speed = 500000;
         }
 
     };
@@ -107,30 +110,10 @@
             this.low = low | 0;
         };
 
-        var HEX_CHARS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+        var HEX_CHARS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
         var HEX_TABLE = {
-            '0': 0,
-            '1': 1,
-            '2': 2,
-            '3': 3,
-            '4': 4,
-            '5': 5,
-            '6': 6,
-            '7': 7,
-            '8': 8,
-            '9': 9,
-            'a': 10,
-            'b': 11,
-            'c': 12,
-            'd': 13,
-            'e': 14,
-            'f': 15,
-            'A': 10,
-            'B': 11,
-            'C': 12,
-            'D': 13,
-            'E': 14,
-            'F': 15
+            "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7,  "8": 8, "9": 9, "a": 10,
+            "b": 11, "c": 12, "d": 13, "e": 14, "f": 15, "A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15
         };
 
         var K = [new Long(0x428A2F98, 0xD728AE22), new Long(0x71374491, 0x23EF65CD),
@@ -605,7 +588,7 @@
      */
     Honesthash.prototype.hex = function(wannaBeHashed) {
 
-        var setOptionalSalt = this._options.salt;
+        var setOptionalSalt = this.options.salt;
 
         var hashedStringWithSha512 = this._implementationOfSha512(
                 wannaBeHashed + setOptionalSalt
@@ -620,7 +603,7 @@
         );
 
         var hashedAgainInLoop = hashedStringWithRipe160;
-        for (var i = 0; i < this._options.loop; i++) {
+        for (var i = 0; i < this.options.speed; i++) {
             hashedAgainInLoop = this._implementationOfRipemd160(hashedAgainInLoop);
         }
 
@@ -629,84 +612,9 @@
     };
 
 
-    /**
-     *
-     *  Bechmark tests speed of all algorithms within library or more looping hashes
-     *
-     */
-    Honesthash.prototype.bechmarkSpeedOfHashing = function() {
-
-        console.log("1st 1", this._benchmarkParticularConf(1, "a"));
-        console.log("2nd 10", this._benchmarkParticularConf(10, "a"));
-        console.log("3rd 100", this._benchmarkParticularConf(100, "a"));
-        console.log("4th 1000", this._benchmarkParticularConf(1000, "a"));
-        console.log("5th 10000", this._benchmarkParticularConf(10000, "a"));
-        console.log("6th 100000", this._benchmarkParticularConf(100000, "a"));
-        console.log("7th 1000000", this._benchmarkParticularConf(1000000, "a"));
-
-    };
-
-    /**
-     *
-     *  Bechmark tests speed of all algorithms within library or more looping hashes
-     *
-     */
-    Honesthash.prototype._benchmarkParticularConf = function(speed, string) {
-
-        // speed is set normally by user
-        this._options.loop = speed;
-
-        this._startDate = +new Date();
-        this.hex(string);
-        this._endDate = +new Date();
-
-        return (this._endDate - this._startDate);
-
-    };
-
-    /**
-     *  Check if given second parameter is really a hash result of the first string
-     */
-    Honesthash.prototype.testBackwardCompatibility = function() {
-
-        var TESTED_HASH = [
-            ["387597980370502395793203798345", "790902594dfef53b4bf6fdcbc20085bc5af5d548"],
-            ["kjnskjnfiwjiofpfjadnskavjandkj", "c301c54c063bf969a5d6ad2d28857d4ed9da4bb6"],
-            ["JKDJOIQJIDQMNMSANKNOIQWJQOISJD", "575e901e9d3ad4aa7e690e24f78072d77b983d2e"],
-            ["ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΜμΞξΦφ", "b291aa343a47554e4459d8b089025eebfeab1202"],
-            ["šľéáíáčíéíýžýťľáíľéčáľíšýčľšýá", "a2e91cf422a3fa72f381cec9bf08844764557318"],
-            ["АБВГДЕЖЅZЗИІКЛМНОПҀРСТȢѸФХѾЦЧШ", "9353a5ab79cb0d8da38a778a365385332370e497"],
-            ["äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ", "d82ad7b0b30e015e49b7743b7ce91e375227bb6f"],
-            [",./ ;']= -- `~@!%^^*&*()!_@#^%", "be70347a5602b8806b31d20ac6982d2b4ce3ce75"]
-        ];
-
-        // save state and later set back to this values
-        var saltState = this._options.salt;
-        var loopState = this._options.loop;
-
-        // reset options for
-        this._options.salt = "";
-        this._options.loop = 1;
-
-        var that = this;
-
-        TESTED_HASH.forEach(function(pair) {
-            // get result - if everything is OK, should be true
-            var isTestedFine = (that.hex(pair[0]) === pair[1]);
-            if (!isTestedFine) throw "something is very very wrong and algorithm is broken!";
-        });
-
-        // revert options to before values
-        this._options.salt = saltState;
-        this._options.loop = loopState;
-
-        console.log("Test passed OK, backward compatibility is fine in all alphabets!");
-        return "Test passed OK, backward compatibility is fine in all alphabets!";
-
-    };
-
-
 
     module.exports = function(options) {
+
         return new Honesthash(options);
+
     };
