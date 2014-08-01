@@ -75,6 +75,8 @@
 
 ### How Honest Hash works?
 
+![HonestHash](http://bit.ly/UFowHY "honest hash")
+
 **Hashing**
 
 Honest Hash puts raw string to SHA512 with given salt. SHA3-512 is used because its the best implementation
