@@ -1,6 +1,6 @@
 # Honest Hash
 
-**Extremely safe, fast and short unique hash in Javascript (and Node.js)**
+## The best hashing algorithm for speed, uniqueness, speed and length
 
 <br/>
 <br/>
