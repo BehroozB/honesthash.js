@@ -61,21 +61,13 @@ A conventional result hash is:
 
     var hashModule = require("./Honesthash.js");
 
-    var development = hashModule({
-        speed: 1, salt: "1f5a5b970a1945c91394", logs: true
-    });
+    var development = hashModule({ speed: 1, salt: "1f5a5ab970a1945c91394", logs: true });
+    var unitTesting = hashModule({ speed: 10000, salt: "159139413f5a5970a", logs: true });
+    var production = hashModule({ speed: 10000, salt: "d73ce9fc1776ad4f", logs: false  });
 
-    var unitTesting = hashModule({
-        speed: 10000, salt: "159139413f5a5970a", logs: true
-    });
-
-    var production = hashModule({
-        speed: 10000, salt: "d73ce9fc1776ad4f", logs: false
-    });
-
-    // development.hex("123");
-    // unitTesting.hex("123");
-    // production.hex("123");
+    console.log( development.hex("123") );
+    console.log( unitTesting.hex("123") );
+    console.log( production.hex("123") );
 
 <br/>
 <br/>
