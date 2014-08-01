@@ -72,12 +72,12 @@ A conventional result hash is:
 <br/>
 <br/>
 
-### Options
+### Available options
 
     {
-        salt: "", // your custom hash, can be any string
-        loop: 1, // can be between 1 and 1000000
-        logs : false // logs everything to console (speed, hash, string)
+        salt: "1234567890", // (MANDAGORY) your custom hash, can be any string
+        loop: 1, // (OPTIONAL) can be between 1 and 1000000
+        logs : false // (OPTIONAL) logs everything to console (speed, hash, string)
     }
 
 <br/>

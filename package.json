@@ -14,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/ondrek/honesthash.js.git"
   },
-  "description": "Fast, secure, salted and short unique hash in Javascript and Node.js",
+  "description": "The best hashing algorithm for speed, uniqueness, speed and length for Javascript",
   "keywords": [
     "fast",
     "secure",
