@@ -7,19 +7,19 @@
 
 ### Problems of conventional hashes and honest hash solutions
 
-**problem:** SPEED: can't be too slow (for big files) either too fast (because of rainbow([*][1]) tables)<br>
+**problem SPEED:** can't be too slow (for big files) either too fast (because of rainbow([*][1]) tables)<br>
 **solution:** honest hash has an optional speed parameter and can be set between 4ms ~ 22000ms
  
-**problem:** LENGTH: can't be too long (shorter hashes means faster and cheaper databases)<br>
+**problem LENGTH:** can't be too long (shorter hashes means faster and cheaper databases)<br>
 **solution:** honest hash is only 40 characters long and still without any collisions 
 
-**problem:** SALTING: can't be hashed only once and without salt (rainbow tables have 43.745[*][2] billion results)<br>
+**problem SALTING:** can't be hashed only once and without salt (rainbow tables have 43.745[*][2] billion results)<br>
 **solution:** honest hash has a **mandatory** salt and optional number of hashing
 
-**problem:** UNIVERSALITY: you must be able to reuse the same library on cliend and server<br>
+**problem UNIVERSALITY:** you must be able to reuse the same library on cliend and server<br>
 **solution:** honest hash has just one implementation for Node.js and client JS
 
-**problem:** COLLISIONS: many hashes have already known collisions (MD5, SHA0, SHA1..)<br>
+**problem COLLISIONS:** many hashes have already known collisions (MD5, SHA0, SHA1..)<br>
 **solution:** honest hash uses internally SHA3-512 and RIPEMD-160 (not known collisions)
 
 <br/>
