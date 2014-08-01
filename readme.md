@@ -19,13 +19,13 @@ When you:
 
 ### Requirements for awesome hash
 
-**1:** Speed
+**1:** Speed<br>
 **a:** Must be reasonably fast (specially for big files), but too quick (for rainbow tables)
 
-**2:** Avalanche effect ([*][4])
+**2:** Avalanche effect ([*][4])<br>
 **a:** If only one bit anywhere in message is changed, whole result must be totally different
 
-**3:** No hash collisions
+**3:** No hash collisions<br>
 **a:** As small possible as possible of Pigeonhole principle ([*][5])
    
 <br/>
