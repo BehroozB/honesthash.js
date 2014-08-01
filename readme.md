@@ -10,18 +10,6 @@
 
 ### Requirements for a ideal hash
 
-**problem:** Speed<br>
-**desc:** Must be reasonably fast (specially for big files), but too quick (no brute force)
-
-**problem:** Avalanche effect ([*wiki][4])<br>
-**desc:** If only one bit anywhere in message is changed, whole result must be totally different
-
-**problem:** No hash collisions<br>
-**desc:** As small possible as possible of Pigeonhole principle ([*wiki][5])
-   
-<br/>
-<br/>
-
 **problem:** SPEED: can't be too slow (for big files) either too fast (because of rainbow([*][1]) tables)<br>
 **solution:** honest hash has an optional speed parameter and can be set between 4ms ~ 22000ms
  
