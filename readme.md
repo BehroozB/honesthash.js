@@ -21,11 +21,11 @@ When you:
 
 A conventional result hash is:
 
-1. too slow (DDoS problem) or too fast (cracking and rainbow([*][id]) tables)
--> honest hash has an optional speed parameter
+1. too slow (DDoS problem) or too fast (cracking and rainbow([*][id]) tables)<br>
+- honest hash has an optional speed parameter
  
-2. too slow (DDoS problem) or too fast (cracking and rainbow([*][id]) tables)
--> honest hash has an optional speed parameter 
+2. too slow (DDoS problem) or too fast (cracking and rainbow([*][id]) tables)<br>
+- honest hash has an optional speed parameter 
 
  - Hash is too slow or too fast
    - Honesthash has optional speed
