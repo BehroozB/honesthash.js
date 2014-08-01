@@ -93,6 +93,10 @@ incorporating a salt protects against rainbow table attacks. Hashing iterates wi
 optional parameter `speed`. Iteration makes hashing slower, so it remains resistant to brute-force search
 attacks even with increasing computer power.
 
+<br/>
+
+![HonestHash](http://bit.ly/UFpVON "honest hash")
+
 <br/><br/><br/>
 
 ### Backward compatibility algorithms
