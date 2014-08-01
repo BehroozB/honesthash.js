@@ -115,8 +115,8 @@ special characters (3), Eastern European characters (4) and many others..
 For a full benchmark see file `docs/bechmark.md`, that contains results of our benchmark. We used iMac 2011
 with OSX Yosimite and Node.js v10.17. Computer had installed 4GB RAM.
 
-![HonestHash](http://bit.ly/UFpVON "honest hash speed 1")
-![HonestHash](http://bit.ly/UFpVON "honest hash speed 2")
+![HonestHash](https://raw.githubusercontent.com/ondrek/honesthash.js/master/graphs/speed1.png "honest hash speed 1")
+![HonestHash](https://raw.githubusercontent.com/ondrek/honesthash.js/master/graphs/speed2.png "honest hash speed 2")
 
 
 <br/><br/><br/>
