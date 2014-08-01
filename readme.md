@@ -5,17 +5,8 @@
 <br/>
 <br/>
 
-### When should I use HonestHash.js?
+### Problems of conventional hashes and honest hash solutions
 
-When you:  
- 
-  - need a very short, but still unique hash
-  - want use one library for client and server side
-  - love open source and javascript
-  - need a configurable own speed of hashing
-   
-<br/>
-<br/>
 
 ### Requirements for a ideal hash
 
@@ -31,24 +22,20 @@ When you:
 <br/>
 <br/>
 
-### Problems of conventional hashes and honest hash solutions
-
-A conventional result hash is:
-
-**p:** too slow (DDoS problem) or too fast (cracking and rainbow([*][1]) tables)<br>
-**s:** honest hash has an optional speed parameter
+**problem:** SPEED: can't be too slow (for big files) either too fast (because of rainbow([*][1]) tables)<br>
+**solution:** honest hash has an optional speed parameter and can be set between 4ms ~ 22000ms
  
-**p:** too long (when you store millions of 512 characters a long string in database)<br>
-**s:** honest hash is only 40 characters long and without any collisions 
+**problem:** LENGTH: can't be too long (shorter hashes means faster and cheaper databases)<br>
+**solution:** honest hash is only 40 characters long and still without any collisions 
 
-**p:** hashed only once and do not use any salt (tables have 43.745[*][2] billion results)<br>
-**s:** honest hash has a **mandatory** salt and optional number of hashing
+**problem:** SALTING: can't be hashed only once and without salt (rainbow tables have 43.745[*][2] billion results)<br>
+**solution:** honest hash has a **mandatory** salt and optional number of hashing
 
-**p:** in different library for client and server side<br>
-**s:** honest hash has just one implementation for Node.js and client JS
+**problem:** UNIVERSALITY: you must be able to reuse the same library on cliend and server<br>
+**solution:** honest hash has just one implementation for Node.js and client JS
 
-**p:** have known collisions (MD5, SHA0, SHA1..)<br>
-**s:** honest hash uses internally SHA3-512 and RIPEMD-160 (not known collisions)
+**problem:** COLLISIONS: many hashes have already known collisions (MD5, SHA0, SHA1..)<br>
+**solution:** honest hash uses internally SHA3-512 and RIPEMD-160 (not known collisions)
 
 <br/>
 <br/>
