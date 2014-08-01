@@ -5,16 +5,21 @@
 <br/>
 <br/>
 
-### When should I use HonestHash.js
+### When should I use HonestHash.js?
 
 When you:  
-  
+ 
+  - want use one library for client and server side
+  - love open source
   - need a very short, but still unique hash
   - need a configurable own speed of hashing
-  - want use one library for client and server side
-  - love open source 
+   
 
 ### Problems of conventional hashes
+
+A result hash is:
+
+ - too slow (DDoS problem) or too fast (cracking and rainbow tables[*][id]) 
 
  - Hash is too slow or too fast
    - Honesthash has optional speed
@@ -142,3 +147,5 @@ For backward compatiblity are tested these strings:
 
 <br/>
 <br/>
+
+ [id]: http://example.com/  "Optional Title Here"
