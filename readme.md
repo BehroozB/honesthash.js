@@ -20,7 +20,7 @@ When you:
 ### Requirements for awesome hash
 
 **problem:** Speed<br>
-**desc:** Must be reasonably fast (specially for big files), but too quick (for rainbow tables)
+**desc:** Must be reasonably fast (specially for big files), but too quick (no brute force)
 
 **problem:** Avalanche effect ([*][4])<br>
 **desc:** If only one bit anywhere in message is changed, whole result must be totally different
