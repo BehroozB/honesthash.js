@@ -6,11 +6,13 @@
 <br/>
 
 ### When should I use HonestHash.js
+
+When you:  
   
-  - When you need a very short, but still unique hash
-  - When you need a configurable own speed of hashing
-  - When you want use one library for client and server side
-  - When you love open source 
+  - need a very short, but still unique hash
+  - need a configurable own speed of hashing
+  - want use one library for client and server side
+  - love open source 
 
 ### Problems of conventional hashes
 
