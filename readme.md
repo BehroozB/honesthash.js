@@ -45,6 +45,7 @@ A conventional result hash is:
 
     var options = { salt : "744bdf813e57252146", speed : 15000 };
     var result = require("./Honesthash.js")(options).hex("123");
+    
     console.log(result);
     > e457227529744e2146bdf813e57259f256fd7cdc
     
@@ -89,38 +90,42 @@ with OSX Yosimite and Node.js v10.17. Computer had installed 4GB RAM.
 <br/>
 <br/>
 
-### Test of the algorithm backward compatibility
+### How Honest Hash works?
 
-Testing of backward compatibility is very important not just for standard US/EU latin charactes,
-but also for special characters, the cyrillic script, spaces, the greek alphabet and diacritics.
+**Hashing**
 
-    var myHonestHashInstance = new require("Honesthash")();
-    myHonestHashInstance.testBackwardCompatibility();
-    // > "Test passed OK, backward compatibility is fine in all alphabets!"
+Honest Hash puts raw string to SHA512 with given salt. SHA3-512 is used because its the best implementation
+of famous SHA serie and result is unique, without any collisions and strong. Problem is that is too long. This
+SHA3 result is given to hashing function RIPE160 and it result is provided back.
 
-For backward compatiblity are tested these strings:
+    uniqButLong = SHA3-512("your string" + salt);
+    shortAndUniq = RIPE160(uniqButLong + salt);
+    
+**Speed**  
 
-    "387597980370502395793203798345"
-    "kjnskjnfiwjiofpfjadnskavjandkj"
-    "JKDJOIQJIDQMNMSANKNOIQWJQOISJD"
-    "ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΜμΞξΦφ"
-    "šľéáíáčíéíýžýťľáíľéčáľíšýčľšýá"
-    "АБВГДЕЖЅZЗИІКЛМНОПҀРСТȢѸФХѾЦЧШ"
-    "äöüÄÖÜëḧïẅẍÿËḦÏẄẌŸäöüÄÖÜëḧïẅẍÿ"
-    ",./ ;']= -- `~@!%^^*&*()!_@#^%"
+Speed is inspired by Niels Provos([*][2]) and David Mazières and theirs **bcrypt**. Optional speed besides 
+incorporating a salt protects against rainbow table attacks. Hashing iterates within a loop that is set by
+optional parameter `speed`. Iteration makes hashing slower, so it remains resistant to brute-force search
+attacks even with increasing computer power.
+
+### Backward compatibility
+
+Honest Hash is tested not just for English characters, but also for the Cyrillic script (`бвгдеёжзийклмнопрстуфхцчшщъыьэюя`),
+numbers (`1234567890`), special characters (`!@#$%^&*()_-+={[}]:;"'|\?/>.<,œ∑´†¥¨ˆπ¬˚∆˙©ƒ∂ßåΩ≈ç√∫˜Ω`), Eastern European 
+characters (`ąàáäâãåæăăâćęèéëêìíïîîłńòóöôõøśșşțţùúüûñçżźа`) and many others.
 
 <br/>
 <br/>
 
 ### Licence
 
- - Can be used on all projects (free for private and commercial use)
- - Use only from the orignal repository (security can be compromised)
- - MIT Licence (full article written in LICENCE.md)
- - Author ~ Samuel Ondrek, twitter.com/ondrek
+ - Free for all projects (commercial and non-commercial)
+ - MIT licenced
+ - For security reasons - use please only the original repository
 
 <br/>
 <br/>
 
  [1]: http://en.wikipedia.org/wiki/Rainbow_table  "Check what is a rainbow table on Wikipedia"
  [2]: http://www.hashkiller.co.uk/  "Try to crack your own MD5 hash"
+ [3]: http://en.wikipedia.org/wiki/Niels_Provos "Niels is a researcher in the areas of secure systems"
