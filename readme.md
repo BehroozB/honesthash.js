@@ -2,18 +2,17 @@
 
 ## The best hashing algorithm for speed, uniqueness, speed and length for Javascript
 
-<br/>
-<br/>
+<br/><br/>
 
 ### Problems of conventional hashes and honest hash solutions
 
-**problem SPEED:** can't be too slow (for big files) either too fast (because of rainbow([*][1]) tables)<br>
+**problem SPEED:** can't be too slow (for big files) or too fast (because of rainbow([*][1]) tables)<br>
 **solution:** honest hash has an optional speed parameter and can be set between 4ms ~ 22000ms
  
 **problem LENGTH:** can't be too long (shorter hashes means faster and cheaper databases)<br>
 **solution:** honest hash is only 40 characters long and still without any collisions 
 
-**problem SALTING:** can't be hashed only once and without salt (rainbow tables have 43.745[*][2] billion results)<br>
+**problem SALTING:** can't be hashed without salt (rainbow tables have 43.745([*][2]) billion results)<br>
 **solution:** honest hash has a **mandatory** salt and optional number of hashing
 
 **problem UNIVERSALITY:** you must be able to reuse the same library on cliend and server<br>
@@ -23,12 +22,10 @@
 **solution:** honest hash uses internally SHA3-512 and RIPEMD-160 (not known collisions)
 
 <br/>
-<br/>
 
 ![HonestHash](http://bit.ly/UFowHY "honest hash")
 
-<br/>
-<br/>
+<br/><br/><br/>
 
 ### How to install and use Honest Hash?
 
@@ -36,6 +33,8 @@
 
     > npm install honesthash
     > node require("./Honesthash.js")
+
+<br/>
 
 **Short usage with salt and speed options**
 
@@ -64,8 +63,7 @@
     console.log( require("./Honesthash.js")().hex("string") );
     > 1176e5c9188f73a5203656949848c19680ecc062
 
-<br/>
-<br/>
+<br/><br/><br/>
 
 ### Available options
 
@@ -75,16 +73,15 @@
       (optional) logs: false // logs everything to console (speed, hash, string)
     }
 
-<br/>
-<br/>
+<br/><br/><br/>
 
 ### How Honest Hash works?
 
 **Hashing**
 
 Honest Hash puts raw string to SHA512 with given salt. SHA3-512 is used because its the best implementation
-of famous SHA serie and result is unique, without any collisions and strong. Problem is that is too long. This
-SHA3 result is given to hashing function RIPE160 and it result is provided back.
+of famous SHA serie and result is unique, without any collisions and strong. Problem is that is too long. 
+This SHA3 result is given to hashing function RIPE160 and it result is provided back.
 
     uniqButLong = SHA3-512("your string" + salt);
     shortAndUniq = RIPE160(uniqButLong + salt);
@@ -96,13 +93,12 @@ incorporating a salt protects against rainbow table attacks. Hashing iterates wi
 optional parameter `speed`. Iteration makes hashing slower, so it remains resistant to brute-force search
 attacks even with increasing computer power.
 
-<br/>
-<br/>
+<br/><br/><br/>
 
 ### Backward compatibility algorithms
 
-Honest Hash is tested not just for English characters, but also for the Cyrillic script (1), numbers (2), special 
-characters (3), Eastern European characters (4) and many others..
+Honest Hash is tested not just for English characters, but also for the Cyrillic script (1), numbers (2), 
+special characters (3), Eastern European characters (4) and many others..
 
     1: `бвгдеёжзийклмнопрстуфхцчшщъыьэюя`
     2: `1234567890`
@@ -110,16 +106,14 @@ characters (3), Eastern European characters (4) and many others..
     4: `ąàáäâãåæăăâćęèéëêìíïîîłńòóöôõøśșşțţùúüûñçżźа`
     5: `zxcvbnmlkjhgfdsaqwertyuiop`
 
-<br/>
-<br/>
+<br/><br/><br/>
 
 ### Bechmark
 
 For a full benchmark see file `docs/bechmark.md`, that contains results of our benchmark. We used iMac 2011
 with OSX Yosimite and Node.js v10.17. Computer had installed 4GB RAM.
 
-<br/>
-<br/>
+<br/><br/><br/>
 
 ### Licence
 
@@ -127,7 +121,6 @@ with OSX Yosimite and Node.js v10.17. Computer had installed 4GB RAM.
  - MIT licenced
  - For security reasons - use please only the original repository
 
-<br/>
 <br/>
 
  [1]: http://en.wikipedia.org/wiki/Rainbow_table  "Check what is a rainbow table on Wikipedia"
