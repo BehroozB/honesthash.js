@@ -25,7 +25,12 @@
 <br/>
 <br/>
 
-### How to use Honest Hash and how a result looks like?
+### How to install and use Honest Hash?
+
+**Installation on server within package.json**
+
+    > npm install honesthash
+    > node require("./Honesthash.js")
 
 **Short usage with salt and speed options**
 
