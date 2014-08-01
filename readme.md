@@ -25,6 +25,11 @@
 <br/>
 <br/>
 
+![HonestHash](http://bit.ly/UFowHY "honest hash")
+
+<br/>
+<br/>
+
 ### How to install and use Honest Hash?
 
 **Installation on server within package.json**
@@ -74,8 +79,6 @@
 <br/>
 
 ### How Honest Hash works?
-
-![HonestHash](http://bit.ly/UFowHY "honest hash")
 
 **Hashing**
 
