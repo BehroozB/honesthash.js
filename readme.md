@@ -108,7 +108,7 @@ incorporating a salt protects against rainbow table attacks. Hashing iterates wi
 optional parameter `speed`. Iteration makes hashing slower, so it remains resistant to brute-force search
 attacks even with increasing computer power.
 
-### Backward compatibility
+### Algorithm backward compatibility
 
 Honest Hash is tested not just for English characters, but also for the Cyrillic script (`бвгдеёжзийклмнопрстуфхцчшщъыьэюя`),
 numbers (`1234567890`), special characters (`!@#$%^&*()_-+={[}]:;"'|\?/>.<,œ∑´†¥¨ˆπ¬˚∆˙©ƒ∂ßåΩ≈ç√∫˜Ω`), Eastern European 
