@@ -9,10 +9,24 @@
 
 When you:  
  
-  - want use one library for client and server side
-  - love open source
   - need a very short, but still unique hash
+  - want use one library for client and server side
+  - love open source and javascript
   - need a configurable own speed of hashing
+   
+<br/>
+<br/>
+
+### Requirements for awesome hash
+
+(1) Speed
+Must be reasonably fast (specially for big files), but too quick (for rainbow tables)
+
+(2) Avalanche effect ([*][4])
+If only one bit anywhere in message is changed, whole result must be totally different
+
+(3) No hash collisions
+As small possible as possible of Pigeonhole principle ([*][5])
    
 <br/>
 <br/>
@@ -74,9 +88,9 @@ A conventional result hash is:
 ### Available options
 
     {
-        (MANDATORY) salt: "1234567890", // your custom hash, can be any string
-        (OPTIONAL) loop: 1, //  can be between 1 and 1000000
-        (OPTIONAL) logs: false // logs everything to console (speed, hash, string)
+      (mandatory) salt: "1234567890", // your custom hash, can be any string
+      (optional) loop: 1, //  can be between 1 and 1000000
+      (optional) logs: false // logs everything to console (speed, hash, string)
     }
 
 <br/>
@@ -137,3 +151,5 @@ with OSX Yosimite and Node.js v10.17. Computer had installed 4GB RAM.
  [1]: http://en.wikipedia.org/wiki/Rainbow_table  "Check what is a rainbow table on Wikipedia"
  [2]: http://www.hashkiller.co.uk/  "Try to crack your own MD5 hash"
  [3]: http://en.wikipedia.org/wiki/Niels_Provos "Niels is a researcher in the areas of secure systems"
+ [4]: http://en.wikipedia.org/wiki/Avalanche_effect
+ [5]: http://en.wikipedia.org/wiki/Pigeonhole_principle
