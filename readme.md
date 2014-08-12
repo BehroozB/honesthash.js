@@ -1,25 +1,25 @@
-# Honest Hash
+# HonestHash
 
-## The best hashing algorithm for speed, uniqueness, speed and length for Javascript
+## The best hashing algorithm for speed, uniqueness and length for Javascript
 
 <br/><br/>
 
-### Problems of conventional hashes and honest hash solutions
+### Problems of conventional hashes and HonestHash solutions
 
-**problem SPEED:** can't be too slow (for big files) or too fast (because of rainbow([*][1]) tables)<br>
-**solution:** honest hash has an optional speed parameter and can be set between 4ms ~ 22000ms
+**problem SPEED:** hashing can't be too slow (for big files) or too fast (rainbow([*][1]) tables)<br>
+**solution:** HonestHash has an optional speed parameter and can be set between 4ms ~ 22000ms
  
-**problem LENGTH:** can't be too long (shorter hashes means faster and cheaper databases)<br>
-**solution:** honest hash is only 40 characters long and still without any collisions 
+**problem LENGTH:** hash can't be too long (shorter hash means faster and cheaper databases)<br>
+**solution:** HonestHash is only 40 characters long and still without any collisions 
 
-**problem SALTING:** can't be hashed without salt (rainbow tables have 43.745([*][2]) billion results)<br>
-**solution:** honest hash has a **mandatory** salt and optional number of hashing
+**problem SALTING:** can't be hashed without a salt (rainbow tables have 43([*][2]) billion results)<br>
+**solution:** HonestHash has a mandatory salt and an optional number of hashing
 
 **problem UNIVERSALITY:** you must be able to reuse the same library on cliend and server<br>
-**solution:** honest hash has just one implementation for Node.js and client JS
+**solution:** HonestHash has just one implementation for Node.js and client JS
 
 **problem COLLISIONS:** many hashes have already known collisions (MD5, SHA0, SHA1..)<br>
-**solution:** honest hash uses internally SHA3-512 and RIPEMD-160 (not known collisions)
+**solution:** HonestHash uses internally SHA3-512 and RIPEMD-160 (not known collisions)
 
 <br/>
 
